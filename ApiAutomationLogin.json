@@ -1,0 +1,41 @@
+package baseTest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ApiAutomationLogin {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "/Users/jannatulfardusretu/Downloads/chromedriver2.1");
+		WebDriver dr = new ChromeDriver();
+		dr.get("http://67.207.83.190:8080/");
+		//this is for email
+		WebElement emailField = dr.findElement(By.id("email"));
+		emailField.sendKeys("jannatulretu95@gmail.com");
+		//this is password
+		WebElement passwordField= dr.findElement(By.id("password"));
+		//click on the sign button
+		passwordField.sendKeys("AAdi17**@");
+		WebElement signInField= dr.findElement(By.xpath("//*[@id=\"signInModal\"]/div/div/div[2]/form/div[3]/button[2]"));
+		signInField.click();
+		
+		
+		//for input
+		dr.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[9]/a")).click();
+		dr.findElement(By.id("fname")).sendKeys("jannatul");
+		dr.findElement(By.id("lname")).sendKeys("Ritu");
+		dr.findElement(By.id("email")).sendKeys("jannatulretu95@gmail.com");
+		dr.findElement(By.xpath("//*[@id=\"submit\"]")).click();
+		Thread.sleep(3000);
+		System.out.println(dr.switchTo().alert().getText());
+		dr.switchTo().alert().accept();
+		Thread.sleep(7000);
+		dr.quit();
+		
+
+	
+	}
+
+}
